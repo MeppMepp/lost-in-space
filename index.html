@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LOST IN SPACE – Proud to be lost</title>
+  <meta name="description" content="LOST IN SPACE [LISPC] – eine deutschsprachige Star Citizen Organisation aus Piloten, Minern und Entdeckern. Social, Exploration, Casual.">
+  <meta property="og:title" content="LOST IN SPACE – Proud to be lost">
+  <meta property="og:description" content="Deep Space Exploration Initiative – eine Star Citizen Orga für alle, die lieber gemeinsam vom Kurs abkommen.">
+  <meta property="og:image" content="assets/logo-512.png">
+  <meta name="theme-color" content="#05070a">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=4">
+</head>
+<body class="is-loading">
+
+  <!-- Preloader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <img src="assets/logo.webp" alt="" class="loader__logo">
+    <div class="loader__meta">
+      <span>Quantum Drive</span>
+      <span class="loader__pct" id="loaderPct">000%</span>
+    </div>
+    <div class="loader__bar"><span id="loaderBar"></span></div>
+  </div>
+
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__brand" aria-label="LOST IN SPACE – nach oben">
+      <img src="assets/logo.webp" alt="" width="40" height="40">
+      <span class="nav__name">Lost in Space</span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Hauptnavigation">
+      <a href="#story"><i>01</i>Geschichte</a>
+      <a href="#manifest"><i>02</i>Manifest</a>
+      <a href="#crew"><i>03</i>Crew</a>
+      <a href="#charta"><i>04</i>Charta</a>
+      <a href="#join" class="nav__cta">Beitreten</a>
+    </nav>
+    <div class="nav__status"><span class="dot"></span>Rekrutierung offen</div>
+    <button class="nav__toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__media" aria-hidden="true">
+        <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.jpg">
+          <source src="assets/img/hero.webm" type="video/webm">
+          <source src="assets/img/hero.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="scanlines" aria-hidden="true"></div>
+
+      <!-- HUD -->
+      <div class="hud hud--tl" aria-hidden="true">
+        <span class="hud__label">SYS</span> Stanton &middot; Pyro &middot; ???<br>
+        <span class="hud__label">NAV</span> <span class="blink">Kurs unbekannt</span>
+      </div>
+      <div class="hud hud--bl" aria-hidden="true">
+        <span class="hud__label">POS</span> <span id="coords">X 0000.00 · Y 0000.00 · Z 0000.00</span>
+      </div>
+      <div class="hud hud--br" aria-hidden="true">
+        <span class="hud__label">ORG</span> LISPC &nbsp;<span class="signal"><i></i><i></i><i></i><i></i></span>
+      </div>
+
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="tag hero__tag"><span>[ LISPC ]</span> Star Citizen Organisation &middot; DE</p>
+          <h1 class="hero__title" aria-label="Lost in Space">
+            <span class="line"><span class="line__in">Lost in</span></span>
+            <span class="line"><span class="line__in">Space</span></span>
+          </h1>
+          <div class="hero__bottom">
+            <p class="hero__claim"><strong>Proud to be lost.</strong> Eine Crew aus Piloten, Minern und Entdeckern, die gemeinsam durchs Verse fliegt und sich dabei selbst nicht zu ernst nimmt.</p>
+            <div class="ctas">
+              <a href="#join" class="btn btn--primary"><span>Crew beitreten</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a href="#story" class="btn btn--line"><span>Mehr erfahren</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="hero__badge" aria-hidden="true">
+          <div class="hero__badge-ring"></div>
+          <img src="assets/logo.webp" alt="" width="1030" height="1024">
+        </div>
+      </div>
+
+      <a href="#story" class="scroll-cue" aria-label="Weiter scrollen"><span></span></a>
+    </section>
+
+    <!-- ============ STORY (Medrunner-Stil: gestapelte Typo + Karte) ============ -->
+    <section class="story" id="story">
+      <div class="story__media">
+        <div class="story__img parallax-img"><img src="assets/img/crew.webp" alt="Eine Crew sitzt in der Messe eines Schiffs und spielt Schach" loading="lazy"></div>
+        <div class="stack" aria-hidden="true">
+          <span class="stack__row" data-x="-8">Lost</span>
+          <span class="stack__row" data-x="6">Lost</span>
+          <span class="stack__row stack__row--fill" data-x="-4">Lost</span>
+          <span class="stack__row" data-x="10">Lost</span>
+        </div>
+      </div>
+      <div class="story__card reveal-card">
+        <p class="tag tag--dark"><span>01</span> Geschichte</p>
+        <h2 class="h2 h2--dark">Wir sind nicht verloren.<br>Wir sind es <em>gemeinsam.</em></h2>
+        <p>Es begann mit einem schlecht geplanten Flug. Ein Quantum-Sprung zu viel – und plötzlich waren wir irgendwo im Verse, ohne zu wissen, wo genau.</p>
+        <p>Statt den Kurs zu korrigieren, haben wir gemerkt: Die Leute, die sich uns anschließen, sind oft die Ruhigeren. Spieler, die Zusammenarbeit dem Rampenlicht vorziehen.</p>
+        <a href="#manifest" class="btn btn--dark"><span>Unser Manifest</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </section>
+
+    <!-- ============ MANIFEST ============ -->
+    <section class="manifest" id="manifest">
+      <div class="manifest__bg parallax-img" aria-hidden="true"><img src="assets/img/clouds.webp" alt="" loading="lazy"></div>
+      <div class="manifest__shade" aria-hidden="true"></div>
+      <div class="manifest__inner">
+        <p class="tag"><span>02</span> Manifest</p>
+        <p class="manifest__text scrub-words">Wir wollen nicht die lauteste Flotte sein. Nicht die eliteste. Bei uns ist Platz für alle, die führen, die beobachten oder einfach still mitfliegen. Wir respektieren einander, lernen aus Fehlern und lachen darüber.</p>
+        <div class="manifest__quote">
+          <span class="line"><span class="line__in">Du musst kein Held sein.</span></span>
+          <span class="line"><span class="line__in accent">Du musst nicht immer den richtigen Kurs kennen.</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CREW ============ -->
+    <section class="crew" id="crew">
+      <div class="crew__head">
+        <p class="tag"><span>03</span> Die Crew</p>
+        <h2 class="h2 split-up">Piloten. Miner. <em>Entdecker.</em></h2>
+        <p class="crew__intro fade-up">Egal ob du am liebsten am Steuer sitzt, Gestein knackst oder unbekannte Systeme kartierst – bei uns findest du Leute, die mitfliegen.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card__img"><img src="assets/img/pilot.webp" alt="Eine Anvil Carrack fliegt über einem Planeten" loading="lazy"></div>
+          <div class="card__body">
+            <span class="card__num">01</span>
+            <h3>Piloten</h3>
+            <p>Transport, Eskorte, Formationsflug oder einfach Spazierflüge durch Asteroidenfelder.</p>
+            <ul class="card__tags"><li>Transport</li><li>Eskorte</li><li>Formation</li></ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__img"><img src="assets/img/miner.webp" alt="Eine Argo MOLE baut mit Mining-Lasern einen Asteroiden ab" loading="lazy"></div>
+          <div class="card__body">
+            <span class="card__num">02</span>
+            <h3>Miner</h3>
+            <p>Vom Multitool bis zur MOLE-Crew. Gemeinsam knacken wir jeden Brocken – und teilen den Ertrag.</p>
+            <ul class="card__tags"><li>Prospector</li><li>MOLE</li><li>ROC</li></ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__img"><img src="assets/img/explorer.webp" alt="Eine Carrack ist in einer verschneiten Waldlandschaft gelandet" loading="lazy"></div>
+          <div class="card__body">
+            <span class="card__num">03</span>
+            <h3>Entdecker</h3>
+            <p>Neue Systeme, versteckte Höhlen, Jump Points und Aussichten, die noch niemand fotografiert hat.</p>
+            <ul class="card__tags"><li>Scanning</li><li>Jump Points</li><li>Höhlen</li></ul>
+          </div>
+        </article>
+      </div>
+
+      <dl class="facts">
+        <div class="fact"><dt>Fokus</dt><dd>Social &amp; Exploration</dd></div>
+        <div class="fact"><dt>Commitment</dt><dd>Casual</dd></div>
+        <div class="fact"><dt>Sprache</dt><dd>Deutsch</dd></div>
+        <div class="fact"><dt>Voice-Chat</dt><dd>Optional</dd></div>
+      </dl>
+    </section>
+
+    <!-- ============ CHARTA (horizontal) ============ -->
+    <section class="charta" id="charta">
+      <div class="charta__pin">
+        <div class="charta__bg" aria-hidden="true"><img src="assets/img/landing.webp" alt="" loading="lazy"></div>
+        <div class="charta__shade" aria-hidden="true"></div>
+        <div class="charta__head">
+          <div>
+            <p class="tag"><span>04</span> Charta</p>
+            <h2 class="h2">Acht Regeln.<br><em>Ein Kurs.</em></h2>
+          </div>
+          <div class="charta__counter" aria-hidden="true"><span id="chartaNum">01</span> / 08</div>
+        </div>
+        <div class="charta__track" id="chartaTrack">
+          <article class="rule"><span class="rule__num">01</span><h3>Respekt &amp; Verhalten</h3><p>Respekt ist Pflicht. Toxisches Verhalten und Belästigung haben bei uns keinen Platz.</p></article>
+          <article class="rule"><span class="rule__num">02</span><h3>Gemeinschaft vor Ego</h3><p>Teamwork ist die Grundlage für jeden Erfolg – egal ob beim Mining-Run oder im Dogfight.</p></article>
+          <article class="rule"><span class="rule__num">03</span><h3>Raum für Ruhige</h3><p>Voice-Chat ist willkommen, aber kein Muss. Auch introvertierte Piloten gehören voll dazu.</p></article>
+          <article class="rule"><span class="rule__num">04</span><h3>Lernen &amp; Fehler</h3><p>Neue Spieler sind herzlich willkommen. Fragen sind ausdrücklich erwünscht.</p></article>
+          <article class="rule"><span class="rule__num">05</span><h3>Struktur</h3><p>Es gibt Ränge, Rollen und Divisionen. Ein Rang bedeutet Verantwortung, nicht Überlegenheit.</p></article>
+          <article class="rule"><span class="rule__num">06</span><h3>Entscheidungen</h3><p>Strategische Entscheidungen trifft das High Command. Feedback aus der Crew ist immer willkommen.</p></article>
+          <article class="rule"><span class="rule__num">07</span><h3>Spaß</h3><p>Star Citizen ist ein Spiel. Abenteuer und Humor stehen bei uns an erster Stelle.</p></article>
+          <article class="rule rule--final"><span class="rule__num">08</span><h3>Grundprinzip</h3><p>Gemeinsam fliegen – auch wenn wir mal vom Kurs abkommen. <strong>Proud to be lost.</strong></p></article>
+        </div>
+        <div class="charta__progress" aria-hidden="true"><span id="chartaBar"></span></div>
+      </div>
+    </section>
+
+    <!-- ============ JOIN ============ -->
+    <section class="join" id="join">
+      <div class="join__bg parallax-img" aria-hidden="true"><img src="assets/img/mountains.webp" alt="" loading="lazy"></div>
+      <div class="join__shade" aria-hidden="true"></div>
+      <div class="join__inner">
+        <p class="tag"><span>05</span> Rekrutierung offen</p>
+        <h2 class="join__title split-up">Bereit, dich <em>zu verlieren?</em></h2>
+        <p class="join__text fade-up">Keine Mindestzeiten, kein Druck, keine Elite-Allüren. Nur eine Crew, die gemeinsam ins Unbekannte fliegt.</p>
+
+        <ol class="steps">
+          <li class="step"><span class="step__n">01</span><strong>RSI-Profil öffnen</strong><small>Unsere Orga auf robertsspaceindustries.com</small></li>
+          <li class="step"><span class="step__n">02</span><strong>„Join us now“ klicken</strong><small>Bewerbung landet direkt beim High Command</small></li>
+          <li class="step"><span class="step__n">03</span><strong>Im <a href="https://discord.gg/QBJkRYFuAK" target="_blank" rel="noopener">Discord</a> melden</strong><small>Hallo sagen, Rolle aussuchen, losfliegen</small></li>
+        </ol>
+
+        <div class="ctas ctas--center">
+          <a href="https://robertsspaceindustries.com/en/orgs/LISPC" class="btn btn--primary" target="_blank" rel="noopener"><span>Auf RSI beitreten</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+          <a href="https://discord.gg/QBJkRYFuAK" class="btn btn--line" target="_blank" rel="noopener"><span>Discord beitreten</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <a href="#top" class="footer__brand">
+        <img src="assets/logo.webp" alt="" width="64" height="64">
+        <span><strong>Lost in Space</strong><small>Deep Space Exploration Initiative</small></span>
+      </a>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="https://robertsspaceindustries.com/en/orgs/LISPC" target="_blank" rel="noopener">RSI-Profil</a>
+        <a href="https://discord.gg/QBJkRYFuAK" target="_blank" rel="noopener">Discord</a>
+        <a href="#charta">Charta</a>
+        <a href="#join">Beitreten</a>
+      </nav>
+    </div>
+    <p class="footer__legal">
+      Inoffizielle Fan-Seite, nicht mit der Cloud Imperium Gruppe verbunden. Bild- und Videomaterial &copy; Cloud Imperium Games. Star Citizen&reg;, Roberts Space Industries&reg; und Cloud Imperium&reg; sind eingetragene Marken der Cloud Imperium Rights LLC.
+    </p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/main.js?v=4"></script>
+</body>
+</html>
